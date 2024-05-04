@@ -1,0 +1,46 @@
+
+<%- include('./partials/_head.ejs') %>   
+   <body>
+      <%- include('./partials/_header-bg.ejs') %>
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="contact_taital">Admin <span style="color: #232222;">Giris</span></h1>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="contact_section_2">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="mail_section map_form_container">
+                     <form id="form1" action="/adminLogin" method="POST" enctype="application/x-www-form-urlencoded">
+                        <div class="row">                       
+                           <input type="text" class="mail_text" placeholder="admin kullanici adi" name="admin_k_id">                           
+                        </div>
+                        <div class="row">
+                           <input type="text" class="mail_text" placeholder="admin sifre" name="admin_pass">                         
+                        </div>
+                           
+                          <div class="btn_main">
+                            <button type="submit">
+                                <div class="send_bt active">
+                                    <a href="javascript:;" onclick="document.getElementById('form1').submit();">Giris Yap</a>
+                                </div>
+                            </button>
+                          </div>
+                           
+                        
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+      <%- include('./partials/_footer') %>
+   </body>
+</html>
