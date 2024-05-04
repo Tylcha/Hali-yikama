@@ -1,7 +1,7 @@
 
-<%- include('./partials/_head.ejs') %>   
-   <body>
-      <%- include('./partials/_header-bg.ejs') %>
+<%- include('../partials/_head.ejs') %>   
+    <body>
+      <%- include('../partials/_header-bg.ejs') %>
       <!-- contact section start -->
       <div class="contact_section layout_padding">
          <div class="container">
@@ -17,15 +17,15 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="mail_section map_form_container">
-                     <form action="">
+                     <form id="form2" action="/adminLogin/photoUpload" method="POST">
                         <div class="row">                       
-                           <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">                           
+                           <input type="text" class="mail_text" placeholder="title" name="title">                           
                         </div>
                         <div class="row">
-                           <input type="text" class="mail_text" placeholder="Email" name="Email">                         
+                           <input type="text" class="mail_text" placeholder="desc" name="desc">                         
                         </div>
                         <div class="row">
-                           <p>oncesi</p>
+                           <p>Oncesi</p>
                            <div class="col-md-3">
                               <div class="my-3">
                                  <input type="file" class="form-control-file rounded-0"  name="image1">
@@ -40,11 +40,13 @@
                               </div>
                            </div>
                         </div>
-                           <div class="col-md-3 ml-auto">
-                              <div class="btn_main">
-                                 <div class="send_bt active"><a href="#">Yukle</a></div>
-                              </div>
-                           </div>
+                        <div class="btn_main">
+                            <button type="submit">
+                                <div class="send_bt active">
+                                    <a href="javascript:;" onclick="document.getElementById('form2').submit();">Yukle</a>
+                                </div>
+                            </button>
+                          </div>
                         
                      </form>
                   </div>
@@ -53,6 +55,6 @@
          </div>
       </div>
       <!-- contact section end -->
-      <%- include('./partials/_footer.ejs') %>
+      <%- include('../partials/_footer.ejs') %>
    </body>
 </html>

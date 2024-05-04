@@ -1,5 +1,9 @@
 import express from 'express';
 import 'dotenv/config';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+    
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //routes
 import pageRoutes from './routes/pageRoutes.js'
@@ -9,6 +13,9 @@ const app = express();
 
 //ejs engine
 app.set('view engine', 'ejs')
+
+//add views file
+app.set('views', [__dirname + '/views/admin/',__dirname + '/views/'])
 
 //public folder
 app.use(express.static('public'));

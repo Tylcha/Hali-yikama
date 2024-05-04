@@ -6,5 +6,12 @@ const postAdminLogin = (req, res) => {
     console.log(user);
     res.redirect('adminLogin');
 };
+const getPhotoUpload = (req, res) => {
+    res.render('photoUploadPage');
+}
+const postPhotoUpload = (req, res) => {
+    const photos = req.body
+    console.log(photos);
+}
 
-export { getAdminLogin, postAdminLogin };
+export { getAdminLogin, postAdminLogin, getPhotoUpload, postPhotoUpload };
