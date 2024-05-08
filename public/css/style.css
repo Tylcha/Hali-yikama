@@ -17,6 +17,30 @@
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
+.col-md-6 .col-sm-6 .col-xs-6 {
+    margin-bottom: 10px; /* İstediğiniz boşluk miktarını buraya yazın */
+    margin-left: 10px;
+}
+
+/* Son div için alt boşluğu sıfırlayın */
+.row > .col-md-6:last-child {
+    margin-bottom: 80px;
+}
+
+
+/* Flex container */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* belirli yukseklik genislik resim */
+.blog_img img {
+    max-width: 100%; /* Maksimum genişlik */
+    height: auto; /* Sabit yükseklik */
+    max-height: 600px;
+    object-fit: cover; /* Resmin boyutunu koruyarak kutuya sığmasını sağlar */
+}
+
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;

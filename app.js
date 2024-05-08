@@ -29,6 +29,8 @@ app.set('views', [__dirname + '/views/admin/',__dirname + '/views/'])
 
 //public folder
 app.use(express.static('public'));
+app.use(express.static('public/uploads'));
+
 
 //settings
 app.use(express.json());

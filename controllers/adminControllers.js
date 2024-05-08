@@ -68,29 +68,28 @@ const postPhotoUpload = async (req, res) => {
 
         //path directory
         uploadPath1 = __dirname + '/../public/uploads/' + uniqImage1;
-        console.log(uploadPath1);
+        // console.log(uploadPath1);
         uploadPath2 = __dirname + '/../public/uploads/' + uniqImage2;
-        console.log(uploadPath2);
+        //console.log(uploadPath2);
 
         //save image and write db and go index
-        const imgSave = async () => {
-            try {
-                await image1.mv(uploadPath1, function (err) {
-                    if (err) return res.status(500).send(err);
-                });
-                await image2.mv(uploadPath2, function (err) {
-                    if (err) return res.status(500).send(err);
-                });
-                await Photo.create({
-                    image1: '/public/uploads/' + uniqImage1,
-                    image2: '/public/uploads/' + uniqImage2,
-                });
-                res.redirect('/');
-            } catch (error) {
-                return res.status(500).send(err);
-            }
-        };
-        imgSave();
+        
+        try {
+            await image1.mv(uploadPath1, function (err) {
+                if (err) return res.status(500).send(err);
+            });
+            await image2.mv(uploadPath2, function (err) {
+                if (err) return res.status(500).send(err);
+            });
+            await Photo.create({
+                image1: uniqImage1,
+                image2: uniqImage2,
+            });
+            res.redirect('/');
+        } catch (error) {
+            return res.status(500).send(err);
+        }
+        
     }
 };
 
