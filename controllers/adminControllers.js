@@ -39,12 +39,20 @@ const getAdminLogin = (req, res) => {
 };
 const postCreateAdmin = async (req, res) => {
     try {
-        console.log(req.body);
-        const admin = await Admin.create(req.body);
-        res.status(201).json({
-            status: 'success',
-            admin,
-        });
+        //console.log(req.body);
+        //what do you want change token
+        if (req.body.token === 1183) {
+            const admin = await Admin.create(req.body);
+            res.status(201).json({
+                status: 'success',
+                admin,
+            });
+        } else {
+            res.status(201).json({
+                status: 'fail',
+                error: 'admin auth wrong',
+            });
+        }
     } catch (error) {
         res.status(400).json({
             status: 'fail',
@@ -93,7 +101,7 @@ const postPhotoUpload = async (req, res) => {
     let image2;
     let uploadPath1;
     let uploadPath2;
-    
+
     // //check file is empt
     if (!req.files || !req.files.image1 || !req.files.image2) {
         return res.status(400).send('Dosyalari duzgun secin');
@@ -158,7 +166,7 @@ const getLogout = (req, res) => {
         });
     }
 };
-const postDetelePhotos = async (req, res) =>{
+const postDetelePhotos = async (req, res) => {
     try {
         // console.log(req.params.id);
         const photoid = await Photo.findById(req.params.id);
@@ -171,10 +179,9 @@ const postDetelePhotos = async (req, res) =>{
         await Photo.findByIdAndDelete(req.params.id);
         res.redirect('/');
     } catch (error) {
-        return res.status(500).send(error)
+        return res.status(500).send(error);
     }
-    
-}
+};
 
 export {
     postCreateAdmin,
@@ -183,5 +190,5 @@ export {
     getPhotoUpload,
     postPhotoUpload,
     getLogout,
-    postDetelePhotos
+    postDetelePhotos,
 };
