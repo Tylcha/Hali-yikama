@@ -20,6 +20,9 @@
 .col-md-6 .col-sm-6 .col-xs-6 {
     margin-bottom: 10px; /* İstediğiniz boşluk miktarını buraya yazın */
     margin-left: 10px;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
 }
 
 /* Son div için alt boşluğu sıfırlayın */
@@ -37,7 +40,8 @@
 .blog_img img {
     max-width: 100%; /* Maksimum genişlik */
     height: auto; /* Sabit yükseklik */
-    max-height: 600px;
+    max-height: 300px;
+    width:100%;
     object-fit: cover; /* Resmin boyutunu koruyarak kutuya sığmasını sağlar */
 }
 
@@ -316,7 +320,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../images/hali_yikama_anasayfa.jpg);
     height: auto;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -449,7 +453,7 @@ button {
 
 .started_text.active a {
     color: #ffffff;
-    background-color: #070606;
+    background-color: #070706;
 }
 
 #my_slider a.carousel-control-prev {
@@ -580,6 +584,7 @@ button {
     transform: scale(1);
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+    height: 300px;
 }
 
 .hover01 figure:hover img {
@@ -881,7 +886,7 @@ textarea#comment.massage-bt::placeholder {
 .testimonial_section {
     width: 100%;
     float: left;
-    background-image: url(../images/client-bg.png);
+    background-image: url(../images/hali_yikama_anasayfa_cover.jfif);
     height: auto;
     background-size: 100%;
     padding-bottom: 150px;

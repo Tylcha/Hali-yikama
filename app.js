@@ -15,6 +15,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 import pageRoutes from './routes/pageRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import fileUpload from 'express-fileupload';
+import methodOverride from "method-override";
 
 //db connection
 import conn from './models/conn.js';
@@ -46,6 +47,11 @@ app.use(
         store: MongoStore.create({ 
             mongoUrl: process.env.DBI_URL,
          })
+    })
+);
+app.use(
+    methodOverride('_method',{
+        methods:['GET'],
     })
 );
 

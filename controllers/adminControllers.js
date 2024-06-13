@@ -93,12 +93,10 @@ const postPhotoUpload = async (req, res) => {
     let image2;
     let uploadPath1;
     let uploadPath2;
-    //check file is empt
-    if (
-        !(req.files.image1 && req.files.image2) ||
-        Object.keys(req.files.image1 && req.files.image2).length === 0
-    ) {
-        res.status(400).send('Hicbir dosya secilmedi.');
+    
+    // //check file is empt
+    if (!req.files || !req.files.image1 || !req.files.image2) {
+        return res.status(400).send('Dosyalari duzgun secin');
     }
 
     //check file type png or jpeg
@@ -160,6 +158,23 @@ const getLogout = (req, res) => {
         });
     }
 };
+const postDetelePhotos = async (req, res) =>{
+    try {
+        // console.log(req.params.id);
+        const photoid = await Photo.findById(req.params.id);
+        let file1 = __dirname + '/../public/uploads/' + photoid.image1;
+        let file2 = __dirname + '/../public/uploads/' + photoid.image2;
+        console.log(__dirname);
+        console.log(file1);
+        fs.unlinkSync(file1);
+        fs.unlinkSync(file2);
+        await Photo.findByIdAndDelete(req.params.id);
+        res.redirect('/');
+    } catch (error) {
+        return res.status(500).send(error)
+    }
+    
+}
 
 export {
     postCreateAdmin,
@@ -167,5 +182,6 @@ export {
     postAdminLogin,
     getPhotoUpload,
     postPhotoUpload,
-    getLogout
+    getLogout,
+    postDetelePhotos
 };

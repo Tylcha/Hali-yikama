@@ -15,5 +15,7 @@ router.route('/createAdmin').post(adminController.postCreateAdmin)
 router.route('/photoUploadPage').get(adminController.getPhotoUpload)
 router.route('/photoUploadPage').post(adminController.postPhotoUpload);
 
+// /adminLogin/deletePhotos
+router.route('/deletePhotos/:id').delete(adminController.postDetelePhotos);
 
 export default router;
