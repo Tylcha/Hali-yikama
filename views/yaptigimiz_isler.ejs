@@ -16,7 +16,10 @@
                <div class="col-md-6 col-sm-6 col-xs-6 padding_right0">
                   <h1 class="blog_taital">Sonrası:</h1>
                   <div class="blog_img"><img class="img-fluid" src="<%= photos[index].image2 %>"></div>
-                  <div class="readmore_bt"><a href="/adminLogin/deletePhotos/<%= photos[index]._id %>?_method=DELETE" onclick="return confirm('Are you sure you want to delete?')">Resmi Sil</a></div>
+                  <% if (UserIN) { %>
+                     <div class="readmore_bt"><a href="/adminLogin/deletePhotos/<%= photos[index]._id %>?_method=DELETE" onclick="return confirm('Are you sure you want to delete?')">Resmi Sil</a></div>
+                  <% } %>
+                  
                </div>
             </div>
          </div>
