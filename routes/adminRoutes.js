@@ -3,14 +3,17 @@ import * as adminController from '../controllers/adminControllers.js';
 
 const router = express.Router();
 
-router
-    .route('/')
-    .get(adminController.getAdminLogin)
-    .post(adminController.postAdminLogin);
+// /adminLogin
+router.route('/').get(adminController.getAdminLogin)
+router.route('/').post(adminController.postAdminLogin);
+router.route('/logout').get(adminController.getLogout);// /adminLogin/logout
 
-router
-    .route('/photoUpload')
-    .get(adminController.getPhotoUpload)
-    .post(adminController.postPhotoUpload);
+//admincreate /adminlogin/createAdmin
+router.route('/createAdmin').post(adminController.postCreateAdmin)
+
+//photos /adminLogin/photoUpload
+router.route('/photoUploadPage').get(adminController.getPhotoUpload)
+router.route('/photoUploadPage').post(adminController.postPhotoUpload);
+
 
 export default router;

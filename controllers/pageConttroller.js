@@ -3,18 +3,18 @@ import Photo from '../models/photo.js';
 const getIndex = (req, res) => {
     res.render('index');
 };
-const getAbout = (req, res) => {
-    res.render('about');
+const getHakkinda = (req, res) => {
+    res.render('hakkinda');
 };
 const getBlog = async (req, res) => {
     const photos = await Photo.find({}).sort({dateCreated:-1});
-    res.render('blog', { photos });
+    res.render('yaptigimiz_isler', { photos });
 };
 const getContact = (req, res) => {
-    res.render('contact');
+    res.render('iletisim');
 };
-const getInsurance = (req, res) => {
-    res.render('insurance');
+const getHizmetlerimiz = (req, res) => {
+    res.render('hizmetlerimiz');
 };
 
-export { getIndex, getAbout, getBlog, getContact, getInsurance };
+export { getIndex, getHakkinda, getBlog, getContact, getHizmetlerimiz };

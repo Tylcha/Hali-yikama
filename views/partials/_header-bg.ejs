@@ -2,10 +2,10 @@
 <div class="header_top">
     <div class="container">
        <div class="row">
-          <div class="col-md-4">
-             <div class="call_text"><a href="#"><img src="/images/call-icon.png"><span class="padding_15">+0123456789</span></div>
+          <div class="col-md-6">
+             <div class="call_text"><a href="tel:+905353011107"><img src="/images/call-icon.png"><span class="padding_15">05353011107</span></div>
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
              <div class="social_icon">
                 <ul>
                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -15,9 +15,9 @@
                    <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
                 </ul>
              </div>
-          </div>
-          <div class="col-md-4">
-             <div class="call_text_1"><a href="#"><img src="/images/mail-icon.png"><span class="padding_15">demo@gmail</span></div>
+          </div> -->
+          <div class="col-md-6">
+             <div class="call_text_1"><a href="https://wa.me/+905353011107"><img src="/images/whatsapp.png"><span class="padding_15">Whatsapp</span></div>
           </div>
        </div>
     </div>
@@ -27,7 +27,7 @@
  <div class="header_section header_bg">
     <div class="container-fluid">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand"href="/"><img src="/images/logo.png"></a>
+          <a class="navbar-brand"href="/"><img src="/images/logoasılpng64.png"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,17 +37,22 @@
                    <a class="nav-link" href="/">Anasayfa</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/about">Hakkımızda</a>
+                   <a class="nav-link" href="/hizmetlerimiz">Hizmetlerimiz</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/insurance">Insurance Policy</a>
+                   <a class="nav-link" href="/hakkinda">Hakkımızda</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/blog">Yaptığımız İşler</a>
+                   <a class="nav-link" href="/yaptigimiz_isler">Yaptığımız İşler</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/contact">Bizimle İletişime Geçin</a>
-                </li>      
+                   <a class="nav-link" href="/iletisim">İletişim</a>
+                </li>
+                <% if (UserIN) { %>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/adminLogin/logout">Çıkış</a>
+                  </li> 
+               <% } %>      
              </ul>
              <!-- <form class="form-inline my-2 my-lg-0">
                <div class="login_bt">

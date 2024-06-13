@@ -6,6 +6,10 @@ import fs from 'fs';
 
 //db schema
 import Photo from '../models/photo.js';
+import Admin from '../models/admin.js';
+
+//bcrypt password
+import bcrypt from 'bcrypt';
 
 //check type of data file
 import mime from 'mime';
@@ -19,15 +23,68 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 const getAdminLogin = (req, res) => {
-    res.render('adminLogin');
+    try {
+        if (req.session.adminID) {
+            // console.log(req.session.adminID);
+            res.status(200).redirect('/adminLogin/photoUploadPage');
+        } else {
+            res.status(200).render('adminLogin');
+        }
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error,
+        });
+    }
 };
-const postAdminLogin = (req, res) => {
-    const user = req.body;
-    console.log(user);
-    res.redirect('adminLogin');
+const postCreateAdmin = async (req, res) => {
+    try {
+        console.log(req.body);
+        const admin = await Admin.create(req.body);
+        res.status(201).json({
+            status: 'success',
+            admin,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error,
+        });
+    }
 };
+const postAdminLogin = async (req, res) => {
+    try {
+        const { admin_k_id, admin_k_pass } = req.body;
+        const admin = await Admin.findOne({ admin_k_id: admin_k_id });
+        if (admin) {
+            bcrypt.compare(admin_k_pass, admin.admin_k_pass, (err, same) => {
+                if (same) {
+                    req.session.adminID = admin._id;
+                    //res.status(200).send('YOU ARE LOGGED IN');
+                    res.status(200).redirect('/adminLogin/photoUploadPage');
+                } else {
+                    res.status(401).send('Invalid password or id');
+                }
+            });
+        } else {
+            res.status(401).send('Invalid password or id');
+        }
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error,
+        });
+    }
+};
+
 const getPhotoUpload = (req, res) => {
-    res.render('photoUploadPage');
+    try {
+        if (req.session.adminID) {
+            res.status(200).render('admin/photoUploadPage');
+        } else {
+            res.redirect('/adminLogin'); // Eğer yönetici oturumu yoksa, burada başka bir işlem yapılabilir veya hata mesajı gönderilebilir.
+        }
+    } catch (error) {}
 };
 const postPhotoUpload = async (req, res) => {
     // console.log(req.files.image1.mimetype);
@@ -73,7 +130,7 @@ const postPhotoUpload = async (req, res) => {
         //console.log(uploadPath2);
 
         //save image and write db and go index
-        
+
         try {
             await image1.mv(uploadPath1, function (err) {
                 if (err) return res.status(500).send(err);
@@ -89,8 +146,26 @@ const postPhotoUpload = async (req, res) => {
         } catch (error) {
             return res.status(500).send(err);
         }
-        
+    }
+};
+const getLogout = (req, res) => {
+    try {
+        req.session.destroy(() => {
+            res.redirect('/');
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error,
+        });
     }
 };
 
-export { getAdminLogin, postAdminLogin, getPhotoUpload, postPhotoUpload };
+export {
+    postCreateAdmin,
+    getAdminLogin,
+    postAdminLogin,
+    getPhotoUpload,
+    postPhotoUpload,
+    getLogout
+};
