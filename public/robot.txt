@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /adminLogin
+Allow: /
+Sitemap: https://www.karacahaliyikama.com/sitemap.xml
