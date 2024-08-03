@@ -126,8 +126,8 @@ const postPhotoUpload = async (req, res) => {
 
         //unig name
         const randomString = Math.random().toString(36).substring(2, 15);
-        const uniqImage1 = randomString + image1.name;
-        const uniqImage2 = randomString + image2.name;
+        const uniqImage1 = "Oncesi" + randomString + image1.name;
+        const uniqImage2 = "Sonrasi" + randomString + image2.name;
 
         //path directory
         uploadPath1 = __dirname + '/../public/uploads/' + uniqImage1;
@@ -148,7 +148,7 @@ const postPhotoUpload = async (req, res) => {
                 image1: uniqImage1,
                 image2: uniqImage2,
             });
-            res.redirect('/');
+            res.redirect('/yaptigimiz_isler');
         } catch (error) {
             return res.status(500).send(err);
         }
@@ -177,7 +177,7 @@ const postDetelePhotos = async (req, res) => {
         fs.unlinkSync(file1);
         fs.unlinkSync(file2);
         await Photo.findByIdAndDelete(req.params.id);
-        res.redirect('/');
+        res.redirect('/yaptigimiz_isler');
     } catch (error) {
         return res.status(500).send(error);
     }

@@ -2,7 +2,7 @@ import Photo from '../models/photo.js';
 
 const getIndex = (req, res) => {
     res.render('index',{
-        page_name:'index',
+        page_name:'',
     });
 };
 const getHakkinda = (req, res) => {
